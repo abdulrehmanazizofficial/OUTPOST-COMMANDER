@@ -2,5 +2,7 @@
   "name": "OUTPOST COMMANDER — Lunar Mission Control & Survival Simulator",
   "description": "An educational NASA Space Apps Challenge lunar outpost mission control and survival simulator near the Moon's south pole.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
