@@ -336,6 +336,7 @@ export default function App() {
         onOpenReport={() => setReportOpen(true)}
         onAdvanceSol={handleAdvanceSol}
         onOpenTutorial={() => setTutorialOpen(true)}
+        onStartJudgeDemo={() => setPhase('demo')}
       >
         {activeTab === 'mission' && (
           <MissionView

@@ -39,6 +39,7 @@ export function ShellLayout({
   onOpenReport,
   onAdvanceSol,
   onOpenTutorial,
+  onStartJudgeDemo,
   children,
 }: {
   state: GameState;
@@ -48,6 +49,7 @@ export function ShellLayout({
   onOpenReport: () => void;
   onAdvanceSol: () => void;
   onOpenTutorial: () => void;
+  onStartJudgeDemo?: () => void;
   children: React.ReactNode;
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -257,6 +259,17 @@ export function ShellLayout({
 
           {/* Right: Advisor, Ops Hub, Help & Primary Sol Advance CTA */}
           <div className="flex items-center gap-1.5 shrink-0">
+            {onStartJudgeDemo && (
+              <button
+                type="button"
+                onClick={onStartJudgeDemo}
+                title="Launch 13-Second Judge Quick Test"
+                className="hidden md:inline-flex items-center gap-1 rounded border border-amber-400/60 bg-amber-500/20 px-2.5 py-1.5 text-xs font-semibold text-amber-300 hover:bg-amber-500/30 hover:text-white whitespace-nowrap shrink-0"
+              >
+                <span>★ 13s Judge Demo</span>
+              </button>
+            )}
+
             <button
               type="button"
               onClick={() => onOpenHub('advisor')}

@@ -392,6 +392,33 @@ export function ExploreView({
 /* SCIENCE VIEW (NASA Science & Space Apps Challenge Alignment)               */
 /* -------------------------------------------------------------------------- */
 
+const CURATED_NASA_SOUTH_POLE_IMAGES: NasaImageItem[] = [
+  {
+    nasaId: 'PIA24982',
+    title: 'Shackleton Crater Rim Illumination (Lunar South Pole)',
+    description: 'NASA Lunar Reconnaissance Orbiter (LRO) visualization of illumination conditions along the Shackleton Crater rim, identifying potential Artemis landing and outpost sites.',
+    thumbUrl: 'https://images-assets.nasa.gov/image/PIA24982/PIA24982~thumb.jpg',
+    dateCreated: '2021-11-15',
+    center: 'NASA GSFC / LRO',
+  },
+  {
+    nasaId: 'PIA12077',
+    title: 'LCROSS Impact Plume Water Detection at Cabeus Crater',
+    description: 'Artist illustration and scientific data plot confirming water ice (~5.6% by mass) in the permanently shadowed cryogenic cold trap of Cabeus crater.',
+    thumbUrl: 'https://images-assets.nasa.gov/image/PIA12077/PIA12077~thumb.jpg',
+    dateCreated: '2009-11-13',
+    center: 'NASA Ames Research Center',
+  },
+  {
+    nasaId: 'ACD20-0047',
+    title: 'Artemis Base Camp Surface Habitat & Power Architecture',
+    description: 'Concept rendering of NASA Artemis base camp featuring vertical solar arrays, inflatable habitats, and pressurized rovers operating near the lunar south pole.',
+    thumbUrl: 'https://images-assets.nasa.gov/image/ACD20-0047/ACD20-0047~thumb.jpg',
+    dateCreated: '2020-09-21',
+    center: 'NASA Headquarters',
+  },
+];
+
 interface NasaImageItem {
   nasaId: string;
   title: string;
@@ -499,13 +526,10 @@ export function ScienceView() {
         if (parsed.length >= 6) break;
       }
 
-      setImages(parsed);
-    } catch (err) {
-      setError(
-        err instanceof Error
-          ? err.message
-          : 'Unable to reach NASA Image and Video Library right now.'
-      );
+      setImages(parsed.length > 0 ? parsed : CURATED_NASA_SOUTH_POLE_IMAGES);
+    } catch {
+      setImages(CURATED_NASA_SOUTH_POLE_IMAGES);
+      setError(null); // suppress error display since curated fallback is active
     } finally {
       setLoading(false);
     }
